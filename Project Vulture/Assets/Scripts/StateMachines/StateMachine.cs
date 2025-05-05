@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace StateMachines
 {
-    public abstract class StateMachine
+    public abstract class StateMachine : MonoBehaviour
     {
         State currentState;
 
@@ -16,6 +16,11 @@ namespace StateMachines
         void Update()
         {
             currentState?.Execute(Time.deltaTime);
+        }
+
+        private void FixedUpdate()
+        {
+            currentState?.ExecuteFixed(Time.deltaTime);
         }
 
         private void OnDestroy()

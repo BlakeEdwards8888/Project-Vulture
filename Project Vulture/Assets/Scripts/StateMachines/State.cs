@@ -6,6 +6,7 @@ namespace StateMachines
     {
         public abstract void Enter();
         public abstract void Execute(float deltaTime);
+        public abstract void ExecuteFixed(float deltaTime);
         public abstract void Exit();
     }
 }

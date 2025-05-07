@@ -14,6 +14,7 @@ namespace Input
 
         public event Action jumpEvent;
         public event Action jumpCanceledEvent;
+        public event Action attackEvent;
 
         void Start()
         {
@@ -38,6 +39,11 @@ namespace Input
         public void OnMove(InputAction.CallbackContext context)
         {
             MovementValue = context.ReadValue<Vector2>();
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            attackEvent?.Invoke();
         }
     }
 }

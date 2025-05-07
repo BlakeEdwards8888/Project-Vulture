@@ -15,11 +15,19 @@ namespace StateMachines.Player
             stateMachine.Animator.Play(IdleHash);
             stateMachine.InputReader.jumpEvent += stateMachine.Jumper.Jump;
             stateMachine.InputReader.jumpCanceledEvent += stateMachine.Jumper.CancelJump;
+            stateMachine.InputReader.attackEvent += Attack;
         }
 
         public override void Execute(float deltaTime)
         {
-            
+            FaceMovementDirection();
+
+            Vector2 inputValue = stateMachine.InputReader.MovementValue;
+
+            if(stateMachine.GroundChecker.IsGrounded() && inputValue.y < -InputValueBuffer)
+            {
+                stateMachine.SwitchState(new PlayerCrouchState(stateMachine));
+            }
         }
 
         public override void ExecuteFixed(float deltaTime)
@@ -31,6 +39,12 @@ namespace StateMachines.Player
         {
             stateMachine.InputReader.jumpEvent -= stateMachine.Jumper.Jump;
             stateMachine.InputReader.jumpCanceledEvent -= stateMachine.Jumper.CancelJump;
+            stateMachine.InputReader.attackEvent -= Attack;
+        }
+
+        void Attack()
+        {
+            stateMachine.SwitchState(new PlayerStandingAttackState(stateMachine));
         }
     }
 }

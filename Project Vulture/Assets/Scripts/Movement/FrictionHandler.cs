@@ -22,12 +22,17 @@ namespace Platformer.Movement
 
         private void FixedUpdate()
         {
-            if (!groundChecker.IsGrounded() || Mathf.Abs(inputReader.MovementValue.x) >= 0.01f) return;
+            if (!groundChecker.IsGrounded() || IsReceivingInput()) return;
 
             float amount = Mathf.Min(Mathf.Abs(rb2d.linearVelocity.x), Mathf.Abs(frictionAmount));
             amount *= Mathf.Sign(rb2d.linearVelocity.x);
 
             rb2d.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+        }
+
+        private bool IsReceivingInput()
+        {
+            return inputReader != null && Mathf.Abs(inputReader.MovementValue.x) >= 0.01f;
         }
     }
 }

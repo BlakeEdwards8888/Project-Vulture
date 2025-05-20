@@ -16,7 +16,8 @@ namespace Combat
             //this checks to see if the layer of the other collider is contained in the hitFilter
             if ((hitFilter & (1 << collision.gameObject.layer)) != 0)
             {
-                print($"Made contact with {collision.name}");
+                if (health.Shield != null && health.Shield.IsBlocking(GetComponent<Collider2D>())) return;
+
                 health.TakeDamage(damage);
             }
         }

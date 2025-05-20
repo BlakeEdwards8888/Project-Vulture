@@ -6,8 +6,7 @@ namespace Combat
     public class Health : MonoBehaviour
     {
         [SerializeField] int startingHealth;
-
-        [SerializeField] SpriteRenderer spriteRenderer;
+        [field: SerializeField] public Shield Shield { get; private set; }
 
         int currentHealth;
 
@@ -20,20 +19,6 @@ namespace Combat
         {
             currentHealth -= amount;
             Debug.Log($"{gameObject.name} took {amount} damage, {currentHealth} health remaining");
-            if(spriteRenderer != null) StartCoroutine(SpriteFlash());
-        }
-
-        IEnumerator SpriteFlash()
-        {
-            Color defaultColor = spriteRenderer.color;
-
-            spriteRenderer.color = Color.red;
-
-            yield return new WaitForSeconds(0.2f);
-
-            spriteRenderer.color = defaultColor;
-
-            yield return null;
         }
     }
 }

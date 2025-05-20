@@ -216,7 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68828c2589993b14296a4e0bd2f190a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2127864863}
 --- !u!212 &139101340 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4735291576439219601, guid: 046c10e843796714aa96ae370bafae1c, type: 3}
@@ -746,7 +745,7 @@ PrefabInstance:
     - target: {fileID: 5420103852504334232, guid: 046c10e843796714aa96ae370bafae1c, type: 3}
       propertyPath: <Shield>k__BackingField
       value: 
-      objectReference: {fileID: 20813196}
+      objectReference: {fileID: 20813197}
     - target: {fileID: 6561473463987751841, guid: 046c10e843796714aa96ae370bafae1c, type: 3}
       propertyPath: m_Name
       value: Player
